@@ -12,7 +12,9 @@ class BrewerysAdmin(admin.ModelAdmin):
         ('Location', {'fields': ['address', 'postcode', 'lat', 'long'], 'classes': ['collapse']}),
         ('Region', {'fields': ['location', 'region'], 'classes': ['collapse']}),
     ]
-
+    list_display   = ('name', 'active', 'region','location')
+    list_filter    = ['active', 'region']
+    search_fields  = ['name', 'location']
     inlines = [BeersInline]
 
 admin.site.register(Brewery, BrewerysAdmin)
