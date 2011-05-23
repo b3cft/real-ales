@@ -10,6 +10,6 @@ urlpatterns = patterns('',
     url(r'^(?P<pk>\d+)/$',
         DetailView.as_view(
             model=Beer,
-            template_name='bber/detail.html'),
-        name='beer_details'),
+            template_name='beer/detail.html'),
+        name='beer_detail'),
 )

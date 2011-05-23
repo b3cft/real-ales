@@ -1,0 +1,41 @@
+html *{margin:0;padding:0;}
+hr{border-bottom: 1px solid #999;margin: .7em 0;}
+fieldset{border:0;}
+body{
+    text-align: center;
+    background: #fff;
+    font-family: Arial, Verdana, sans-serif;
+}
+table, tr, td, input, select, textarea{
+    font-family: inherit;
+    font-size: inherit;
+}
+.red{color: #c00;}
+.green{color: #5a1;}
+.blue{color: #00f;}
+.caps{text-transform: uppercase;}
+.cleft{clear:left;}
+.cright{clear:right;}
+.clear{clear:both;}
+.fleft{float:left;display:inline;}
+.fright{float:right;display:inline;}
+.bold{font-weight: bold;}
+.unbold{font-weight: normal;}
+.italic{font-style: italic;}
+.offscreen{position: absolute; left: -999em;}
+.hidden{display:none;}
+abbr,span.abbr,acronym {
+    cursor: help;
+    border-bottom: 1px dotted #639;
+}
+br.clear{line-height: 0;}
+body *{text-align: left;}
+h1,h2,h3,h4,h5,h6{
+    font-family: "Century Gothic", "Trebuchet MS", "Arial Narrow", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+div#body{
+	width: 740px;
+	margin: 0 auto;
+}

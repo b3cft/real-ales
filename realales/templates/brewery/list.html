@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Breweries Page {{ breweries.number }} of {{ breweries.paginator.num_pages }}{% endblock %}
+
+{% block content %}
+<style>
+ol.counter {counter-reset: item {{ breweries.start_index|add:"-1"}};}
+ol.counter li {display: block;}
+ol.counter li:before {
+    content: counter(item) ". ";
+    counter-increment: item;
+}
+
+</style>
+<h1>Breweries</h1>
+{% if breweries.object_list %}
+    <ol class="counter"">
+    {% for brewery in breweries.object_list %}
+        <li><a href="/brewery/{{ brewery.id }}/">{{ brewery.name }}</a></li>
+    {% endfor %}
+    </ol>
+{% else %}
+    <p>No breweries found.</p>
+{% endif %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if breweries.has_previous %}
+            <a href="?page={{ breweries.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ breweries.number }} of {{ breweries.paginator.num_pages }}.
+        </span>
+
+        {% if breweries.has_next %}
+            <a href="?page={{ breweries.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

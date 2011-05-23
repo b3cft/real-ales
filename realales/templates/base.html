@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-gb">
+<head>
+  <title>{% block title %}page title{% endblock %} | Real Ales Info</title>
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" media="screen">
+  <link rel="shortcut icon" href="{{ STATIC_URL}}img/favicon.ico">
+  {% block extra_head %}{% endblock %}
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id='body' class='{% block content-class %}{% endblock %}'>
+{% block content %}{% endblock %}
+</div>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

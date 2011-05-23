@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} {{brewery.name}} Brewery {% endblock %}
+
+{% block content %}
+<h1>{{ brewery.name }}</h1>
+
+<table>
+    <tr><th>Location</th><td>{{ brewery.location }}</td></tr>
+    <tr><th>Region</th><td>{{ brewery.region }}</td></tr>
+    <tr><th>Description</th><td>{{ brewery.description }}</td></tr>
+    <tr><th>Address</th><td>{{ brewery.address }}</td></tr>
+    <tr><th>Postcode</th><td>{{ brewery.postcode }}</td></tr>
+    <tr><th>Lat/Long</th><td>{{ brewery.lat }}/{{ brewery.long }}</td></tr>
+    <tr><th>Website</th><td>{{ brewery.website }}</td></tr>
+    <tr><th>Phone</th><td>{{ brewery.phone }}</td></tr>
+    <tr><th>Fax</th><td>{{ brewery.fax }}</td></tr>
+</table>
+
+<h2>Beers</h2>
+<ul>
+{% for beer in brewery.beer_set.all %}
+    <li> <a href="{% url beer_detail beer.id %}">{{ beer.name }} - {{ beer.abv }}%</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

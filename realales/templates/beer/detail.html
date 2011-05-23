@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} {{beer.name}} by {{beer.brewery.name}} Brewery {% endblock %}
+
+{% block content %}
+<h1>{{ beer.name }} by <a href="{% url brewery_detail beer.brewery.id %}">{{ beer.brewery.name }}</a> Brewery</h1>
+
+<table>
+    <tr><th>ABV</th><td>{{ beer.abv }}%</td></tr>
+    <tr><th>OG</th><td>{{ beer.og }}</td></tr>
+    <tr><th>Notes</th><td>{{ beer.notes }}</td></tr>
+</table>
+
+     
+{% endblock %}
