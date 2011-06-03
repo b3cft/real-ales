@@ -3,10 +3,7 @@ from django.views.generic import DetailView, ListView
 from beer.models import Beer
 
 urlpatterns = patterns('',
-    (r'^$',
-        ListView.as_view(
-            queryset=Beer.objects.order_by('name')[:20],
-            template_name='beer/list.html')),
+    (r'^$',ListView.as_view(queryset=Beer.objects.order_by('name')[:25],template_name='beer/list.html')),
     url(r'^(?P<pk>\d+)/$',
         DetailView.as_view(
             model=Beer,
