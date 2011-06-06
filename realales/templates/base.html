@@ -5,13 +5,48 @@
   <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" media="screen">
   <link rel="shortcut icon" href="{{ STATIC_URL}}img/favicon.ico">
   {% block extra_head %}{% endblock %}
-  <!--[if lt IE 9]>
-  <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
 </head>
 <body>
-<div id='body' class='{% block content-class %}{% endblock %}'>
+<div id="body" class="{% block content-class %}{% endblock %}">
+{% block search %}
+<div id="search">
+    <form id="searchform" action="/search/" method="GET">
+        <label for="query">Search for</label><input type="text" size="20" name="q" id="query" />
+        <input type="submit" name="submit" value="Go Search" />
+    </form>
+</div>
+{% endblock %}
 {% block content %}{% endblock %}
+{% if debug %}
+<div id="debug">
+  <h2>Queries</h2>
+  <p>
+    {{ sql_queries|length }} Quer{{ sql_queries|pluralize:"y,ies" }}
+    {% ifnotequal sql_queries|length 0 %}
+    (<span style="cursor: pointer;" onclick="var s=document.getElementById('debugQueryTable').style;s.display=s.display=='none'?'':'none';this.innerHTML=this.innerHTML=='Show'?'Hide':'Show';">Show</span>)
+    {% endifnotequal %}
+  </p>
+  <table id="debugQueryTable" style="display: none;">
+    <col width="1"></col>
+    <col></col>
+    <col width="1"></col>
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">SQL</th>
+      <th scope="col">Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for query in sql_queries %}<tr class="{% cycle odd,even %}">
+      <td>{{ forloop.counter }}</td>
+      <td>{{ query.sql|escape }}</td>
+      <td>{{ query.time }}</td>
+    </tr>{% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
 </div>
 {% block extra_js %}{% endblock %}
 </body>
