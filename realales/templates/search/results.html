@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Results {{ beers.number }} of {{ beers.paginator.num_pages }}{% endblock %}
+
+{% block content %}
+<style>
+ol.counter {counter-reset: item {{ beers.start_index|add:"-1"}};}
+ol.counter li {display: block;}
+ol.counter li:before {
+    content: counter(item) ". ";
+    counter-increment: item;
+}
+
+</style>
+<h2>Found</h2>
+{% if beers.object_list %}
+    <ol class="counter"">
+    {% for beer in beers.object_list %}
+        <li><a href="/brewery/{{ beer.brewery.id }}/">{{ beer.brewery.name  }}</a>, <a href="/beer/{{ beer.id }}/">{{ beer.name }}</a></li>
+    {% endfor %}
+    </ol>
+{% else %}
+    <p>No beers found.</p>
+{% endif %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if beers.has_previous %}
+            <a href="{% url search_results phrase %}?page={{ beers.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ beers.number }} of {{ beers.paginator.num_pages }}.
+        </span>
+
+        {% if beers.has_next %}
+            <a href="{% url search_results phrase %}?page={{ beers.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
