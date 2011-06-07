@@ -6,9 +6,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 
 def search(request, phrase, startswith):
     if startswith:
-        found_breweries = Brewery.objects.filter(name__startswith=request.GET.get('q', phrase))
+        found_breweries = Brewery.objects.filter(name__startswith=request.GET.get('q', phrase)).order_by('name')
     else:
-        found_breweries = Brewery.objects.filter(name__contains=request.GET.get('q', phrase))
+        found_breweries = Brewery.objects.filter(name__contains=request.GET.get('q', phrase)).order_by('name')
 
     paginator = Paginator(found_breweries, 25)
 
