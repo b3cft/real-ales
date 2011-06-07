@@ -11,7 +11,9 @@ class Brewery(models.Model):
     long        = models.FloatField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     website     = models.CharField(max_length=200,null=True, blank=True)
+    email       = models.CharField(max_length=200,null=True, blank=True)
     phone       = models.CharField(max_length=20,null=True, blank=True)
+    mobile      = models.CharField(max_length=20,null=True, blank=True)
     fax         = models.CharField(max_length=20,null=True, blank=True)
     active      = models.BooleanField()
 
