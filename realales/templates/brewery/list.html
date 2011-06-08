@@ -16,7 +16,7 @@ ol.counter li:before {
 {% if breweries.object_list %}
     <ol class="counter"">
     {% for brewery in breweries.object_list %}
-        <li><a href="/brewery/{{ brewery.id }}/">{{ brewery.name }}</a></li>
+        <li><a href="{% url brewery_detail_withname brewery.id brewery.name %}">{{ brewery.name }}</a></li>
     {% endfor %}
     </ol>
 {% else %}

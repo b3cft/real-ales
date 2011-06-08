@@ -1,4 +1,3 @@
-from beer.models import Beer
 from brewery.models import Brewery
 from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage
@@ -23,6 +22,6 @@ def search(request, phrase, startswith):
     return render_to_response('brewery/list.html', {"breweries": breweries}, context_instance=RequestContext(request))
 
 
-def detail(request, brewery_id):
-    brewery = get_object_or_404(Brewery, pk=brewery_id)
+def detail(request, pk, name):
+    brewery = get_object_or_404(Brewery, pk=pk)
     return render_to_response('brewery/detail.html', {'brewery': brewery}, context_instance=RequestContext(request))
