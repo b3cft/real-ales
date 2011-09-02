@@ -34,8 +34,15 @@ h1,h2,h3,h4,h5,h6{
     font-family: "Century Gothic", "Trebuchet MS", "Arial Narrow", Arial, sans-serif;
     text-transform: uppercase;
     font-weight: normal;
+    clear:left;
 }
 div#body{
 	width: 740px;
 	margin: 0 auto;
+}
+
+ul.brewerylist li{
+    list-style:none;
+    float:left;
+    padding: 2px;
 }

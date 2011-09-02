@@ -4,10 +4,14 @@ from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render_to_response, get_object_or_404
 
 def search(request, phrase, startswith):
+    q = request.GET.get('q', phrase)
     if startswith:
-        found_breweries = Brewery.objects.filter(name__startswith=request.GET.get('q', phrase)).order_by('name')
+        if q == '-':
+            found_breweries = Brewery.objects.filter(name__regex=r'^[^a-zA-Z]').order_by('name')
+        else:
+            found_breweries = Brewery.objects.filter(name__istartswith=q).order_by('name')
     else:
-        found_breweries = Brewery.objects.filter(name__contains=request.GET.get('q', phrase)).order_by('name')
+        found_breweries = Brewery.objects.filter(name__contains=q).order_by('name')
 
     paginator = Paginator(found_breweries, 25)
 

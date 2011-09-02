@@ -6,7 +6,7 @@ register = Library()
 
 @register.simple_tag
 def searchLinks():
-    letters=''
+    letters='<li><a href="'+reverse('brewery_startswith', args='-')+'">#</a></li>'
     for letter in string.ascii_lowercase:
         letters += '<li><a href="'+reverse('brewery_startswith', args=[letter])+'">'+letter+'</a></li>'
     return letters
