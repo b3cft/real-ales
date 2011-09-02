@@ -117,6 +117,7 @@ INSTALLED_APPS = (
     'beer',
     'brewery',
     'region',
+    'pages',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

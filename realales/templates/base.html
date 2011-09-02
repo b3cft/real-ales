@@ -8,6 +8,13 @@
 </head>
 <body>
 <div id="body" class="{% block content-class %}{% endblock %}">
+{% block masthead %}
+<div id="masthead">
+    <ul id="main-nav">
+        <li><a href="{% url homepage %}">Home</a></li>
+    </ul>
+</div>
+{% endblock %}
 {% block search %}
 <div id="search">
     <form id="searchform" action="/search/" method="GET">
@@ -17,6 +24,13 @@
 </div>
 {% endblock %}
 {% block content %}{% endblock %}
+
+{% block footer %}
+{% load listify %}
+<ul>
+    {% searchLinks %}
+</ul>
+{% endblock %}
 {% if debug %}
 <div id="debug">
   <h2>Queries</h2>
