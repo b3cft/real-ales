@@ -15,6 +15,6 @@ class BrewerysAdmin(admin.ModelAdmin):
     list_display   = ('name', 'active', 'region','location')
     list_filter    = ['active', 'region']
     search_fields  = ['name', 'location']
-    inlines = [BeersInline]
+    inlines        = [BeersInline]
 
 admin.site.register(Brewery, BrewerysAdmin)

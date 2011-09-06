@@ -1,0 +1,12 @@
+{% extends "admin/change_form.html" %}
+{% block footer %}
+    {{ block.super }}
+    <script type="text/javascript">
+        (function($) {
+            var selector = "h2:contains('Beers')";
+            $(selector).parent().addClass("collapsed");
+            $(selector).append(" (<a class=\"collapse-toggle\" id=\"customcollapser\" href=\"#\">Show</a>)");
+            $("#customcollapser").click(function() {$(selector).parent().toggleClass("collapsed");});
+        })(django.jQuery);
+    </script>
+{% endblock %}
